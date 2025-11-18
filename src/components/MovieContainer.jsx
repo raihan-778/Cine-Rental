@@ -1,6 +1,7 @@
 import { SideBar } from "./SideBar";
 
-import Movie
+import { getAllMovies } from "../data/movies";
+import { MovieCard } from "./MovieCard";
 
 export const MovieContainer = () => {
   return (
@@ -13,7 +14,11 @@ export const MovieContainer = () => {
         {/* <!-- Content --> */}
         <div class="content">
           <div class="grid sm:grid-cols-2 xl:grid-cols-3 gap-7">
-            
+            {getAllMovies.map((movie) => (
+              <MovieCard key={movie.id} movie={movie} />
+            ))}
+            {/* <!-- Begin Card --> */}
+
             {/* <!-- Begin Card --> */}
             <figure class="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">
               <img
