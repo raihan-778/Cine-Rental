@@ -1,4 +1,8 @@
-import React from "react";
+import CommingSoonIcon from "../assets/icons/commingSoon.svg";
+import FavouriteIcon from "../assets/icons/favourite.svg";
+import NewReleaseIcon from "../assets/icons/newRelease.svg";
+import TrendingIcon from "../assets/icons/trending.svg";
+import WatchLaterIcon from "../assets/icons/watchLater.svg";
 
 export const SideBar = () => {
   return (
@@ -9,12 +13,7 @@ export const SideBar = () => {
             className="flex items-center space-x-2 px-5 py-3.5 rounded-lg bg-primary text-black"
             href="#"
           >
-            <img
-              src="./assets/icons/trending.svg"
-              width="24"
-              height="24"
-              alt=""
-            />
+            <img src={TrendingIcon} width="24" height="24" alt="" />
             <span>Trending</span>
           </a>
         </li>
@@ -23,12 +22,7 @@ export const SideBar = () => {
             className="flex items-center space-x-2 px-5 py-3.5 rounded-lg"
             href="#"
           >
-            <img
-              src="./assets/icons/newRelease.svg"
-              width="24"
-              height="24"
-              alt=""
-            />
+            <img src={NewReleaseIcon} width="24" height="24" alt="" />
             <span>New Releases</span>
           </a>
         </li>
@@ -37,12 +31,7 @@ export const SideBar = () => {
             className="flex items-center space-x-2 px-5 py-3.5 rounded-lg"
             href="#"
           >
-            <img
-              src="./assets/icons/commingSoon.svg"
-              width="24"
-              height="24"
-              alt=""
-            />
+            <img src={CommingSoonIcon} width="24" height="24" alt="" />
             <span>Coming Soon</span>
           </a>
         </li>
@@ -51,12 +40,7 @@ export const SideBar = () => {
             className="flex items-center space-x-2 px-5 py-3.5 rounded-lg"
             href="#"
           >
-            <img
-              src="./assets/icons/favourite.svg"
-              width="24"
-              height="24"
-              alt=""
-            />
+            <img src={FavouriteIcon} width="24" height="24" alt="" />
             <span>Favourites</span>
           </a>
         </li>
@@ -65,12 +49,7 @@ export const SideBar = () => {
             className="flex items-center space-x-2 px-5 py-3.5 rounded-lg"
             href="#"
           >
-            <img
-              src="./assets/icons/watchLater.svg"
-              width="24"
-              height="24"
-              alt=""
-            />
+            <img src={WatchLaterIcon} width="24" height="24" alt="" />
             <span>Watch Later</span>
           </a>
         </li>
