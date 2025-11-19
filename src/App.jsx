@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useState } from "react";
 import { MovieCartConext } from "../context";
 import "./App.css";
 import { Footer } from "./components/Footer";

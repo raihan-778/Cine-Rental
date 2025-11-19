@@ -1,17 +1,16 @@
 import { useContext, useState } from "react";
+import { MovieCartConext } from "../../context";
 import Tag from "../assets/tag.svg";
 import { getImageUrl } from "../utils/cine-utilites";
-import { MovieDetails } from "./MovieDetails";
+import { MovieDetailsModal } from "./MovieDetailsModal";
 import { MovieRatings } from "./movieRatings";
-import { MovieCartConext } from "../../context";
 
 export const MovieCard = ({ movie = {} }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
-  const { cover, title, descriptio, genre, rating, price, id } = movie;
+  const { cover, title, genre, rating, price } = movie;
 
   const { cartData, setCartData } = useContext(MovieCartConext);
-  const [showCart, setShowCart] = useState(false);
 
   const handleCloseModal = () => {
     console.log("Onclose Modal Clicked");
@@ -27,20 +26,26 @@ export const MovieCard = ({ movie = {} }) => {
 
   const handleAddToCart = (event, movie) => {
     event.stopPropagation();
-    const found=cartData.find(item=>item.id===movie.id)
-  
-      console.error("This Movie is already added to cart ",found);
+    const found = cartData?.find((item) => {
+      return item.id === movie.id;
+    });
+    if (!found) {
+      setCartData([...cartData, movie]);
+      console.log("Add to cart clicked", cartData);
+    } else {
+      console.error(`This ${movie.title} is already in the cart`);
     }
-
-    setCartData(movie);
-    console.log("cart", movie);
   };
 
   return (
     <>
       {" "}
       {showModal && (
-        <MovieDetails onClose={handleCloseModal} movie={selectedMovie} />
+        <MovieDetailsModal
+          onClose={handleCloseModal}
+          movie={selectedMovie}
+          onCartAdd={handleAddToCart}
+        />
       )}
       <a href="#" onClick={() => handleSelectMovie(movie)}>
         <figure className="p-4 border border-black/10 shadow-sm dark:border-white/10 rounded-xl">

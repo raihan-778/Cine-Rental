@@ -1,13 +1,12 @@
-import { useState } from "react";
+import { useContext } from "react";
+import { MovieCartConext } from "../../context";
 import { getImageUrl } from "../utils/cine-utilites";
 
-export const MovieDetails = ({ movie = {}, onClose }) => {
-  const [cartItems, setCartItems] = useState([]);
-  const { id, cover, title, description, genre, rating, price } = movie;
-  const addToCart = (movie) => {
-    console.log("ItemTo Cart", movie);
-    setCartItems(movie);
-  };
+export const MovieDetailsModal = ({ movie = {}, onClose, onCartAdd }) => {
+  const { cover, title, description, genre, price } = movie;
+
+  const { cartData, setCartData } = useContext(MovieCartConext);
+
   // const [itemToCart,setItemToCart]=useState(false)
 
   return (
@@ -35,13 +34,12 @@ export const MovieDetails = ({ movie = {}, onClose }) => {
               </p>
               <div className="grid lg:grid-cols-2 gap-2">
                 <a
+                  onClick={(e) => onCartAdd(e, movie)}
                   className="bg-primary rounded-lg py-2 px-5 flex items-center justify-center gap-2 text-[#171923] font-semibold text-sm"
                   href="#"
                 >
                   <img src="./assets/tag.svg" alt="" />
-                  <button onClick={() => addToCart(movie)}>
-                    ${price} | Add to Cart
-                  </button>
+                  <span>${price} | Add to Cart</span>
                 </a>
                 <a
                   onClick={onClose}

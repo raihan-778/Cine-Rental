@@ -5,6 +5,7 @@ import { MovieCard } from "./MovieCard";
 
 export const MovieContainer = () => {
   const movies = getAllMovies();
+
   return (
     //   <!-- Begin Main -->
     <main>
