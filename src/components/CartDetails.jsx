@@ -15,13 +15,15 @@ export const CartDetails = ({ onClose }) => {
             Your Carts
           </h2>
           <div className="space-y-8 lg:space-y-12 max-h-[450px] overflow-auto mb-10 lg:mb-14">
-            {cartData.map((item) => {
+            {cartData.map((item) => (
               <div className="grid grid-cols-[1fr_auto] gap-4">
                 <div className="flex items-center gap-4">
                   <img
                     className="rounded overflow-hidden"
                     src={getImageUrl(item.cover)}
                     alt=""
+                    height={40}
+                    width={50}
                   />
                   <div>
                     <h3 className="text-base md:text-xl font-bold">
@@ -39,8 +41,8 @@ export const CartDetails = ({ onClose }) => {
                     <span className="max-md:hidden">Remove</span>
                   </button>
                 </div>
-              </div>;
-            })}
+              </div>
+            ))}
           </div>
           <div className="flex items-center justify-end gap-2">
             <a
