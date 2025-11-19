@@ -1,13 +1,12 @@
-import React from "react";
+import Star from "../assets/star.svg";
 
-export const MovieRatings = () => {
+export const MovieRatings = ({ value = 0 }) => {
+  const stars = Array(value).fill(Star);
   return (
-    <div class="flex items-center space-x-1 mb-5">
-      <img src="./assets/star.svg" width="14" height="14" alt="" />
-      <img src="./assets/star.svg" width="14" height="14" alt="" />
-      <img src="./assets/star.svg" width="14" height="14" alt="" />
-      <img src="./assets/star.svg" width="14" height="14" alt="" />
-      <img src="./assets/star.svg" width="14" height="14" alt="" />
+    <div className="flex items-center space-x-1 mb-5">
+      {stars.map((star, i) => (
+        <img src={star} alt="star" hight="14" width="14" key={i}></img>
+      ))}
     </div>
   );
 };
