@@ -1,11 +1,7 @@
-import { useContext } from "react";
-import { MovieCartConext } from "../../context";
 import { getImageUrl } from "../utils/cine-utilites";
 
 export const MovieDetailsModal = ({ movie = {}, onClose, onCartAdd }) => {
   const { cover, title, description, genre, price } = movie;
-
-  const { cartData, setCartData } = useContext(MovieCartConext);
 
   // const [itemToCart,setItemToCart]=useState(false)
 

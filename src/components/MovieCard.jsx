@@ -1,16 +1,17 @@
 import { useContext, useState } from "react";
+import { toast } from "react-toastify";
 import { MovieCartConext } from "../../context";
 import Tag from "../assets/tag.svg";
 import { getImageUrl } from "../utils/cine-utilites";
 import { MovieDetailsModal } from "./MovieDetailsModal";
-import { MovieRatings } from "./movieRatings";
+import { MovieRatings } from "./MovieRatings";
 
 export const MovieCard = ({ movie = {} }) => {
   const [selectedMovie, setSelectedMovie] = useState(null);
   const [showModal, setShowModal] = useState(false);
   const { cover, title, genre, rating, price } = movie;
 
-  const { cartData, setCartData } = useContext(MovieCartConext);
+  const { state, dispatch } = useContext(MovieCartConext);
 
   const handleCloseModal = () => {
     console.log("Onclose Modal Clicked");
@@ -26,13 +27,18 @@ export const MovieCard = ({ movie = {} }) => {
 
   const handleAddToCart = (event, movie) => {
     event.stopPropagation();
-    const found = cartData?.find((item) => {
+    const found = state.cartData?.find((item) => {
       return item.id === movie.id;
     });
     if (!found) {
-      setCartData([...cartData, movie]);
-      console.log("Add to cart clicked", cartData);
+      dispatch({
+        type: "ADD_TO_CART",
+        payload: { ...movie },
+      });
+      console.log("Add to cart clicked", state.cartData);
+      toast.success(`This movie ${movie.title} is added to your cart!`);
     } else {
+      toast.error(`This movie ${movie.title} is already in your cart`);
       console.error(`This ${movie.title} is already in the cart`);
     }
   };
